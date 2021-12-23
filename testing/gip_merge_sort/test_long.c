@@ -16,7 +16,7 @@ int long_long_cmp(const void *a, const void *b) {
 int main() {
 	int i;
 	long long a[10] = {10, 9, 8, 7, 6, 5, 4, 3, 2, 1};
-	gip_merge_sort(a, sizeof(a)/sizeof(long long), sizeof(long long), long_long_cmp);
+	gip_merge_sort(a, 10, sizeof(long long), long_long_cmp);
 	for(i=0;i<10;i++)
 		printf("%lld ", a[i]);
 	printf("\n");
