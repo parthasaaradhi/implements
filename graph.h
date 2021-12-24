@@ -73,6 +73,8 @@ void print_graph_cc(struct Graph* g) {
 			printf("\n");
 		}
 	}
+	for(i=0;i<g->size;i++)
+		g->verticies[i].state = 'n';
 }
 
 struct Node* get_true_master_vertex(int i, struct Graph* g) {
