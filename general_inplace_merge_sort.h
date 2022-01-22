@@ -5,8 +5,6 @@
 
 #define MYCOPY(a,b,size) do { size_t __size = (size); char * __a = (a), *__b = (b); do { *__a = *__b; __a++; __b++; } while(--__size > 0); }while(0)
 
-extern void gip_merge_sort(void* p, size_t n, size_t size,int (*compar) (const void*, const void*)) __nonnull ((1,4));
-
 void gip_merge_sort(void* p, size_t n, size_t size,int (*compar) (const void*, const void*)) {	
 	void* temp;
 	temp = malloc(n*size);
