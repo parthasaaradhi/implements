@@ -1,7 +1,7 @@
 #ifndef GRAPH_H
 #define GRAPH_H
 #include<stdlib.h>
-
+#include<stdio.h>
 struct connected_component {
 	int id;
 	int size;
@@ -37,15 +37,15 @@ void dsu_print(int root, struct Graph* g);
 
 struct Graph* get_new_graph(int n) {
 	int i;
-	struct Graph* g = malloc(sizeof(struct Graph));
+	struct Graph* g = (struct Graph*) malloc(sizeof(struct Graph));
 	g->size = n;
-	g->verticies = malloc(g->size*sizeof(struct Node));
+	g->verticies = (struct Node*) malloc(g->size*sizeof(struct Node));
 	for(i=0;i<g->size;i++) {
 		g->verticies[i].id = i;
 		g->verticies[i].children_size = 0;
-		g->verticies[i].children = malloc(0);
+		g->verticies[i].children = (int*) malloc(0);
 		g->verticies[i].master = &(g->verticies[i]);
-		g->verticies[i].cc = malloc(sizeof(struct connected_component));
+		g->verticies[i].cc = (struct connected_component*) malloc(sizeof(struct connected_component));
 		g->verticies[i].cc->id = i;
 		g->verticies[i].cc->size = 1;
 		g->verticies[i].state = 'n';
@@ -101,7 +101,8 @@ void add_undir_edge(int l, int r, struct Graph* g) {
 
 void add_dir_edge(int parent, int child, struct Graph* g) {
 	g->verticies[parent].children_size++;
-	g->verticies[parent].children = realloc(g->verticies[parent].children, g->verticies[parent].children_size*sizeof(int));
+	g->verticies[parent].children =
+		(int*) realloc(g->verticies[parent].children, g->verticies[parent].children_size*sizeof(int));
 	g->verticies[parent].children[g->verticies[parent].children_size-1] = child;
 	connect_two_verticies(parent, child, g);
 }
