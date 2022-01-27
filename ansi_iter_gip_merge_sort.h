@@ -37,6 +37,7 @@ void ansi_iter_gip_merge_sort(void* p, size_t n, size_t size,int (*compar) (cons
 {
 	size_t i,cut,l,r,f;
 	void* temp = malloc(n*size);
+	memcpy(temp, p, n*size);
 	cut=2;
 	while(cut<2*n) {
 		i=0;
