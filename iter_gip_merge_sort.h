@@ -4,6 +4,7 @@
 #include<stdlib.h>
 #include<string.h>
 
+void iter_gip_merge_sort(void* p, size_t n, size_t size, int (*compar) (const void*, const void*));
 void iter_gip_merge_sort(void* p, size_t n, size_t size,int (*compar) (const void*, const void*))
 {
 	size_t iter,cut,i,m,left,right,f;
@@ -22,23 +23,23 @@ void iter_gip_merge_sort(void* p, size_t n, size_t size,int (*compar) (const voi
 			i = left;
 			right = m;
 			while(left<m && right<f) {
-				if((*compar)(p+left*size, p+right*size) <=0) {
-					memcpy(temp+i*size, p+left*size, size);
+				if((*compar)((char*)p+left*size, (char*)p+right*size) <=0) {
+					memcpy((char*)temp+i*size, (char*)p+left*size, size);
 					left++;
 				} else {
-					memcpy(temp+i*size, p+right*size, size);
+					memcpy((char*)temp+i*size, (char*)p+right*size, size);
 					right++;
 				}
 				i++;
 			}
 			while(left<m) {
-				memcpy(temp+i*size, p+left*size, size);
+				memcpy((char*)temp+i*size, (char*)p+left*size, size);
 				left++;
 				i++;
 			}
 
 			while(right<f) {
-				memcpy(temp+i*size, p+right*size, size);
+				memcpy((char*)temp+i*size, (char*)p+right*size, size);
 				right++;
 				i++;
 			}
