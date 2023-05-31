@@ -36,7 +36,7 @@ void fraction_simplify(struct fraction* f) {
 	else {
 		g = gcd_long(abs_long(f->numerator), f->denominator);
 		f->numerator = f->numerator/g;
-		f->denominator = f->denominator;
+		f->denominator = f->denominator/g;
 	}
 }
 
@@ -52,8 +52,10 @@ int fraction_inverse(struct fraction* result, struct fraction* f) {
 }
 
 void fraction_add(struct fraction* dest ,struct fraction* left, struct fraction* right) {
-	dest->numerator = left->numerator*right->denominator + right->numerator*left->denominator;
-	dest->denominator = left->denominator*right->denominator;
+	long long g;
+	g = gcd_long(right->denominator, left->denominator);
+	dest->numerator = left->numerator*(right->denominator/g) + right->numerator*(left->denominator/g);
+	dest->denominator = left->denominator*(right->denominator/g);
 	fraction_simplify(dest);
 }
 
