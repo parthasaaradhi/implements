@@ -36,7 +36,7 @@ void fraction_simplify(struct fraction* f) {
 	}
 	g = gcd_int(abs(f->numerator), f->denominator);
 	f->numerator = f->numerator/g;
-	f->denominator = f->denominator;
+	f->denominator = f->denominator/g;
 	return;
 }
 

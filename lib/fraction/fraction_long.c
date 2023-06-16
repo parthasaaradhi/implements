@@ -45,8 +45,8 @@ int fraction_inverse(struct fraction* result, struct fraction* f) {
 		printf("ERROR: Fraction: Cannot Invert 0\n");
 		return 1;
 	} else {
-		result->denominator = f->numerator>0? f->numerator : -1*f->numerator;
-		result->numerator = abs_long(f->numerator);
+		result->denominator = abs_long(f->numerator);
+		result->numerator = f->numerator>0? abs_long(f->denominator) : -1*abs_long(f->denominator);
 		return 0;
 	}
 }

@@ -45,7 +45,7 @@ int main() {
 		for(j=0;j<i+1;j++) {
 			temp = malloc(sizeof(struct fraction));
 			fraction_set(temp, power(i+1, j));
-			fraction_multiply(temp, temp, &(B->f[j][0]));
+			fraction_mult(temp, temp, &(B->f[j][0]));
 			fraction_add(ans, ans, temp);
 			free(temp);
 		}
